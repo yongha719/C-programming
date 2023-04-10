@@ -52,19 +52,6 @@ void my_strcpy(char* dest, const char* src)
 	}
 }
 
-void print_calendar()
-{
-	int day = 1;
-
-	printf("Sun Mon Tue Wen Thu Fri Sat\n");
-	for (day = 1; day <= 31; day++) {
-		printf("%3d ", day);
-		if (day % 7 == 0) {
-			printf("\n");
-		}
-	}
-}
-
 int main(void)
 {
 	/*char* str = "helloddd";
