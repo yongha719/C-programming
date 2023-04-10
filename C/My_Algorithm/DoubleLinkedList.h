@@ -7,5 +7,6 @@ struct Node
 	int data;
 };
 
-Node* Add(Node* node);
+void Add(Node* node);
 void Remove(int node);
+int Length();

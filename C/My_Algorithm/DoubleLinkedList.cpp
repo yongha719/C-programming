@@ -1,32 +1,43 @@
-#include "DoubleLinkedList.h"
+癤�#include "DoubleLinkedList.h"
 #include <assert.h>
 
 Node* head = nullptr;
-Node* curnode = nullptr;
+Node* tail = nullptr;
 
-Node* Add(Node* const node)
+int size = 0;
+
+void Add(Node* node)
 {
-	// 현재 노드가 NULL이 아닐때
-	if (curnode != nullptr) {
-		curnode->nextnode = node;
-		curnode->prevnode = curnode;
-		curnode = node;
-		return curnode;
+	if (head != NULL)
+	{
+		tail->nextnode = node;
+		node->prevnode = tail;
+		tail = node;
 	}
-
-	// 처음 들어오는 노드이므로 초기화
-	if (head == nullptr) {
+	else {
 		head = node;
-		curnode = head;
-		return curnode;
+		tail = node;
 	}
 
-	// 추가 못 할시 nullptr 반환하고 그냥 리턴
-	return nullptr;
+	size++;
 }
 
 //template <typename T>
-void Remove(int node)
+void Remove(int data)
 {
+	Node* removenode = head;
 
+	for (int i = 0; i < size; i++) {
+		if (removenode->data == data)
+			break;
+		removenode = removenode->nextnode;
+	}
+
+	removenode->prevnode->nextnode = removenode->nextnode;
+	size--;
+}
+
+int Length()
+{
+	return size;
 }
